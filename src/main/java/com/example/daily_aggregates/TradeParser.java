@@ -3,17 +3,29 @@ package com.example.daily_aggregates;
 
 public class TradeParser {
 
-    public static Trade parse(String logEntry) {
-        String[] parts = logEntry.split(";");
+    public static Trade parse(String line) {
+        if (line == null || line.trim().isEmpty()) {
+            System.out.println("Skipping empty line.");
+            return null;
+        }
+        String[] parts = line.split(";");
         if (parts.length != 4) {
-            throw new IllegalArgumentException("Invalid log entry format");
+            System.out.println("Skipping invalid line." + line);
+            return null;
         }
 
-        String timestamp = parts[0];
-        String ticker = parts[1];
-        double price = Double.parseDouble(parts[2]);
-        int volume = Integer.parseInt(parts[3]);
+        try {
 
-        return new Trade(timestamp, ticker, price, volume);
+            String timestamp = parts[0].trim();
+            String ticker = parts[1].trim();
+            double price = Double.parseDouble(parts[2].trim());
+            int volume = Integer.parseInt(parts[3].trim());
+
+            return new Trade(timestamp, ticker, price, volume);
+        } catch (NumberFormatException e) {
+            System.out.println("Skipping line due to invalid number: " + line);
+            return null;
+        }
+
     }
 }

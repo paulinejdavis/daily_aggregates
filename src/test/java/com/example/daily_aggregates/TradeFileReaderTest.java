@@ -19,5 +19,4 @@ public class TradeFileReaderTest {
             assertEquals("ABC", trades.get(0).getTicker());
             assertEquals(100, trades.get(0).getPrice());
         }
-    }
 }
