@@ -7,7 +7,7 @@ class TradeParserTest {
     @Test
     void shouldParseTradeEntry(){
         String logEntry = "2025-01-20 09:00:01;ABC;100;500";
-        Trade trade = TradeParserTest.parse(logEntry);
+        Trade trade = TradeParser.parse(logEntry);
 
         assertNotNull(trade);
         assertEquals("ABC", trade.getTicker());
