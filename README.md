@@ -4,7 +4,7 @@
 ## Purpose
 
 The aim of this task is to calculate daily stock market summaries from a given historical 
-trade log. This includes  tracking open and close prices, highest and lowest prices, daily
+trade log. This includes tracking open and close prices, highest and lowest prices, daily
 traded volume, and a weighted market index for specific stocks.
 
 
@@ -36,6 +36,7 @@ number of securities traded
 
 
 ### Calculation for each stock per day
+```
 * **Open Price:** Price of the first trade of the day
 * **Close Price:** Price of the last trade of the day
 * **Highest Price:** Max trade price of the day
@@ -43,7 +44,7 @@ number of securities traded
 * **Daily Traded Volume:** Sum of (price x number of securities traded)
 * **Daily values for INDEX:** calculating market index for each day based on the weighted
 sum of specific ticker prices
-
+```
 
 ## Market index Calculation
 

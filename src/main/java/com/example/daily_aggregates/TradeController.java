@@ -1,11 +1,9 @@
 package com.example.daily_aggregates;
 
 
-import io.micrometer.core.instrument.distribution.StepBucketHistogram;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
 
 import java.io.IOException;
 import java.util.Map;
@@ -20,8 +18,13 @@ public class TradeController {
         this.tradeService = tradeService;
     }
     @GetMapping("/summary")
-    public Map<String, Map<String, DailySummary>> getTradeSummaries(@RequestParam String filePath) throws IOException {
-        return tradeService.getDailySummaries("src/test/resources/sample_trades.txt");
+    public ResponseEntity<?> getTradeSummaries(@RequestParam String filePath) {
+        try {
+            Map<String, Map<String, DailySummary>> summaries = tradeService.getDailySummaries(filePath);
+            return ResponseEntity.ok(summaries);
+        } catch (IOException e) {
+            return ResponseEntity.status(500).body("Error reading file: " + e.getMessage());
+        }
     }
 
 }
