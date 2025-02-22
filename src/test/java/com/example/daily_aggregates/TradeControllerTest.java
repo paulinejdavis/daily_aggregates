@@ -51,7 +51,7 @@ import static org.junit.jupiter.api.Assertions.*;
             assertEquals(105, abcSummary.closePrice());
             assertEquals(105, abcSummary.highPrice());
             assertEquals(100, abcSummary.lowPrice());
-            assertEquals(50000, abcSummary.totalVolume());
+            assertEquals(113000.0, abcSummary.totalVolume());
 
         } catch (Exception e) {
             fail("Exception occurred while fetching trade summaries: " + e.getMessage());

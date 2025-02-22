@@ -34,7 +34,7 @@ public class TradeAggregatorTest {
         assertEquals(120, summary.highPrice());
         assertEquals(100, summary.lowPrice());
         assertEquals(expectedTotalVolume, summary.totalVolume());
-
-
     }
+
+
 }
