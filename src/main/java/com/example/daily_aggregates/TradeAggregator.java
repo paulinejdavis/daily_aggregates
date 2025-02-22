@@ -1,20 +1,46 @@
 package com.example.daily_aggregates;
 
-import java.util.List;
-import java.util.OptionalDouble;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.Comparator;
 
 public class TradeAggregator {
 
-    public static DailySummary aggregate(List<Trade> trades) {
+    public static Map<String, Map<String, DailySummary>> aggregate(List<Trade> trades){
         if (trades.isEmpty()) {
-            return new DailySummary(0,0,0,0,0 );
+            return Collections.emptyMap();
         }
 
-        double openPrice = trades.get(0).getPrice();
-        double closePrice = trades.get(trades.size() - 1).getPrice();
-        OptionalDouble highPrice = trades.stream().mapToDouble(Trade ::getPrice).max();
-        OptionalDouble lowPrice = trades.stream().mapToDouble(Trade ::getPrice).min();
-        double totalVolume = trades.stream().mapToDouble(trade -> trade.getPrice() * trade.getVolume()).sum();
+        return trades.stream()
+                .collect(Collectors.groupingBy(
+                        Trade::getDate,  // Group by date first
+                        Collectors.groupingBy(
+                                Trade::getTicker,  // Then group by ticker
+                                Collectors.collectingAndThen(Collectors.toList(),
+                                        TradeAggregator::summariseTrades) // Summarize
+                        )
+                ));
+    }
+
+    private static DailySummary summariseTrades(List<Trade> trades) {
+        if (trades.isEmpty()) {
+            return new DailySummary(0, 0, 0, 0, 0);
+        }
+
+        // Sort trades to ensure correct open/close price selection
+        List<Trade> sortedTrades = trades.stream()
+                .sorted(Comparator.comparing(Trade::getTimestamp))
+                .toList();
+
+        double openPrice = sortedTrades.get(0).getPrice();
+        double closePrice = sortedTrades.get(sortedTrades.size() - 1).getPrice();
+        OptionalDouble highPrice = sortedTrades.stream().mapToDouble(Trade::getPrice).max();
+        OptionalDouble lowPrice = sortedTrades.stream().mapToDouble(Trade::getPrice).min();
+
+        // totalVolume sums **price * volume** (not just volume)
+        double totalVolume = sortedTrades.stream()
+                .mapToDouble(trade -> trade.getPrice() * trade.getVolume())
+                .sum();
 
         return new DailySummary(
                 openPrice,
@@ -23,6 +49,6 @@ public class TradeAggregator {
                 lowPrice.orElse(0),
                 totalVolume
         );
-
     }
+
 }

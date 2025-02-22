@@ -1,7 +1,10 @@
 package com.example.daily_aggregates;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
 import static org.junit.jupiter.api.Assertions.*;
+
 
 class TradeParserTest {
     @Test

@@ -41,7 +41,7 @@ number of securities traded
 * **Highest Price:** Max trade price of the day
 * **Lowest Price:** Min trade price of the day
 * **Daily Traded Volume:** Sum of (price x number of securities traded)
-* **Daily values for INDEX:** calculating market index for each day based on he weighte
+* **Daily values for INDEX:** calculating market index for each day based on the weighted
 sum of specific ticker prices
 
 
@@ -155,20 +155,34 @@ at least once
 ```
 
 
-
+## Setup:
+```
+git clone https://github.com/paulinejdavis/daily_aggregates.git
+cd daily_aggregates
+```
 
 ## How to run:
 ```
-
+./mvnw spring-boot:run
+mvn spring-boot:run
 ```
 
-## Setup:
+## Once running visit:
+```
+http://localhost:8080/
 ```
 
+## Running tests:
+```
+./mvnw test
+mvn test # if using maven
 ```
 
 ## Dependencies:
 ```
+**Java 17**
+**Maven**
+**Git**
 
 ```
 
