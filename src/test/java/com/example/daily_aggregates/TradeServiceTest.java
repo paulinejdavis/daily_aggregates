@@ -56,4 +56,20 @@ public class TradeServiceTest {
         assertEquals(105, abcSummary.highPrice());
         assertEquals(100, abcSummary.lowPrice());
     }
+
+    @Test
+    void shouldCalculateMarketIndex() throws IOException {
+        String filePath = "src/test/resources/sample_trades.txt";
+
+        Map<String, Double> stockWeights = Map.of(
+                "ABC", 0.4,  // 40% weight
+                "MEGA", 0.3, // 30% weight
+                "XYZ", 0.2,  // 20% weight
+                "TRX", 0.1   // 10% weight
+        );
+
+        double marketIndex = tradeService.calculateMarketIndex(filePath, stockWeights);
+        double expectedIndex = (105 * 0.4) + (195 * 0.3) + (300 * 0.2) + (245 * 0.1);
+        assertEquals(expectedIndex, marketIndex, 0.01, "Market index should be correctly calculated.");
+    }
 }
