@@ -200,18 +200,25 @@ mvn test # if using maven
 
 ```
 ## Useful commands
-```
-Postman
-http://localhost:8080/trades/summary?filePath=src/test/resources/sample_trades.txt
-http://localhost:8080/trades/market-index?filePath=src/test/resources/sample_trades.txt
 
-Browser URLs
-http://localhost:8080/trades/summary?filePath=src/test/resources/sample_trades.txt
-http://localhost:8080/trades/market-index?filePath=src/test/resources/sample_trades.txt
-
-
+### Postman endpoints:
+````
+GET http://localhost:8080/trades/summary?filePath=src/test/resources/sample_trades.txt
+````
+API retrieves daily aggregated trade summaries from a historical trade log file. It processes market trade data to 
+extract key statistics for each stock on a given trading day
 
 ```
+GET http://localhost:8080/trades/market-index?filePath=src/test/resources/sample_trades.txt
+```
+Calculates the market index based on the weighted sum of specific tickers
+
+#### Browser URLs
+```
+http://localhost:8080/trades/summary?filePath=src/test/resources/sample_trades.txt
+http://localhost:8080/trades/market-index?filePath=src/test/resources/sample_trades.txt
+```
+
 
 ## Useful screengrabs
 
