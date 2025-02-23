@@ -13,9 +13,9 @@ public class TradeAggregator {
 
         return trades.stream()
                 .collect(Collectors.groupingBy(
-                        Trade::getDate,  // Group by date first
+                        Trade::getDate,
                         Collectors.groupingBy(
-                                Trade::getTicker,  // Then group by ticker
+                                Trade::getTicker,
                                 Collectors.collectingAndThen(Collectors.toList(),
                                         TradeAggregator::summariseTrades) // Summarize
                         )
@@ -27,7 +27,6 @@ public class TradeAggregator {
             return new DailySummary(0, 0, 0, 0, 0);
         }
 
-        // Sort trades to ensure correct open/close price selection
         List<Trade> sortedTrades = trades.stream()
                 .sorted(Comparator.comparing(Trade::getTimestamp))
                 .toList();
@@ -37,7 +36,6 @@ public class TradeAggregator {
         OptionalDouble highPrice = sortedTrades.stream().mapToDouble(Trade::getPrice).max();
         OptionalDouble lowPrice = sortedTrades.stream().mapToDouble(Trade::getPrice).min();
 
-        // totalVolume sums **price * volume*(trade -> trade.getPrice() * trade.getVolume())* (not just volume)
         double totalVolume = sortedTrades.stream()
                 .mapToDouble(trade -> trade.getPrice() * trade.getVolume())
                 .sum();

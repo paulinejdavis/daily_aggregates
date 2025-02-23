@@ -190,15 +190,15 @@ mvn test # if using maven
 
 
 ## Next steps - improvements:
-```
-* Refactor Controller Logic – Move business logic from controllers to TradeService to keep controllers clean and maintainable.
-* Improve Error Handling – Add validation for missing or corrupted data, handle exceptions more gracefully, and return clear API error messages.
-* Enhance Unit Testing – Cover more edge cases, including empty trade files, missing weights, and invalid dates, while mocking dependencies to improve test reliability.
-* Optimize Market Index Calculation – Store stock weights in a config file (application.properties) for easier updates and flexibility.
-* Improve API Response Formatting – Use DTOs (Data Transfer Objects) and @JsonInclude(JsonInclude.Include.NON_NULL) to clean up API responses and remove unnecessary fields.
-* Enhance Logging & Monitoring – Replace excessive System.out.println() statements with a logging framework like SLF4J to improve debugging and system observability.
 
-```
+* **Refactor Controller Logic** – Move business logic from controllers to TradeService to keep controllers clean and maintainable.
+* **Improve Error Handling** – Add validation for missing or corrupted data, handle exceptions more gracefully, and return clear API error messages.
+* **Enhance Unit Testing** – Cover more edge cases, including empty trade files, missing weights, and invalid dates, while mocking dependencies to improve test reliability.
+* **Optimize Market Index Calculation** – Store stock weights in a config file (application.properties) for easier updates and flexibility.
+* **Improve API Response Formatting** – Use DTOs (Data Transfer Objects) and @JsonInclude(JsonInclude.Include.NON_NULL) to clean up API responses and remove unnecessary fields.
+* **Enhance Logging & Monitoring** – Replace excessive System.out.println() statements with a logging framework like SLF4J to improve debugging and system observability.
+
+
 ## Useful commands
 
 ### Postman endpoints:
@@ -209,24 +209,55 @@ API retrieves daily aggregated trade summaries from a historical trade log file.
 extract key statistics for each stock on a given trading day
 
 ```
+{
+"2025-01-21" : {
+"NGL" : {
+"openPrice" : 160.0,
+"closePrice" : 165.0,
+"highPrice" : 165.0,
+"lowPrice" : 160.0,
+"totalVolume" : 144750.0
+},
+"ABC" : {
+"openPrice" : 110.0,
+"closePrice" : 115.0,
+"highPrice" : 115.0,
+"lowPrice" : 110.0,
+"totalVolume" : 131800.0
+},
+"MEGA" : {
+"openPrice" : 210.0,
+"closePrice" : 205.0,
+"highPrice" : 210.0,
+"lowPrice" : 205.0,
+"totalVolume" : 67200.0
+},
+```
+```
 GET http://localhost:8080/trades/market-index?filePath=src/test/resources/sample_trades.txt
 ```
 Calculates the market index based on the weighted sum of specific tickers
 
+```
+190.0
+```
+
 #### Browser URLs
 ```
 http://localhost:8080/trades/summary?filePath=src/test/resources/sample_trades.txt
+
 http://localhost:8080/trades/market-index?filePath=src/test/resources/sample_trades.txt
 ```
 
 
-## Useful screengrabs
-
+## Output screen grabs
+### Postman:
 <img width="775" alt="Screenshot 2025-02-23 at 11 49 31" src="https://github.com/user-attachments/assets/3b6bd27b-426b-46e3-b076-4622f9eae4f9" />
 
 
 <img width="770" alt="Screenshot 2025-02-23 at 11 48 52" src="https://github.com/user-attachments/assets/750fec43-2cbc-446b-b2ff-05ee357656a9" />
 
+### In the Browser:
 <img width="348" alt="Screenshot 2025-02-23 at 12 04 32" src="https://github.com/user-attachments/assets/685536f0-aa90-4636-bb7d-dd461d475f3b" />
 </br></br></br>
 <img width="244" alt="Screenshot 2025-02-23 at 12 04 43" src="https://github.com/user-attachments/assets/91dd5fd1-c75f-4f01-88fe-7e51f9c690f0" />

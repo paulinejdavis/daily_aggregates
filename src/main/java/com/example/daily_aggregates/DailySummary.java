@@ -18,18 +18,23 @@ public record DailySummary (
         this.totalVolume = totalVolume;
     }
     public double openPrice() {
+
         return openPrice;
     }
     public double closePrice() {
+
         return closePrice;
     }
     public double highPrice() {
+
         return highPrice;
     }
     public double lowPrice() {
+
         return lowPrice;
     }
     public double totalVolume() {
+
         return totalVolume;
     }
 

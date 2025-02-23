@@ -1,6 +1,5 @@
 package com.example.daily_aggregates;
 
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

@@ -1,6 +1,5 @@
 package com.example.daily_aggregates;
 
-import java.util.HashMap;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -54,7 +53,6 @@ public class TradeServiceTest {
         assertEquals(105, abcSummary.highPrice());
         assertEquals(100, abcSummary.lowPrice());
     }
-
 
     @Test
     void shouldCalculateMarketIndex() throws IOException {

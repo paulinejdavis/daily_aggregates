@@ -1,7 +1,5 @@
 package com.example.daily_aggregates;
 
-import javax.management.monitor.StringMonitor;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 

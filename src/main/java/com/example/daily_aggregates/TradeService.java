@@ -34,7 +34,6 @@ public class TradeService {
                 "TRX", 0.2
         );
 
-        // Find the most recent date that has at least one weighted stock
         String latestValidDate = summaries.keySet().stream()
                 .sorted(Comparator.reverseOrder()) // Sort in descending order
                 .filter(date -> summaries.get(date).keySet().stream().anyMatch(weights::containsKey))
