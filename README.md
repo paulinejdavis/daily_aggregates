@@ -201,6 +201,15 @@ mvn test # if using maven
 ```
 ## Useful commands
 ```
+Postman
+http://localhost:8080/trades/summary?filePath=src/test/resources/sample_trades.txt
+http://localhost:8080/trades/market-index?filePath=src/test/resources/sample_trades.txt
+
+Browser URLs
+http://localhost:8080/trades/summary?filePath=src/test/resources/sample_trades.txt
+http://localhost:8080/trades/market-index?filePath=src/test/resources/sample_trades.txt
+
+
 
 ```
 
