@@ -191,6 +191,12 @@ mvn test # if using maven
 
 ## Next steps - improvements:
 ```
+* Refactor Controller Logic – Move business logic from controllers to TradeService to keep controllers clean and maintainable.
+* Improve Error Handling – Add validation for missing or corrupted data, handle exceptions more gracefully, and return clear API error messages.
+* Enhance Unit Testing – Cover more edge cases, including empty trade files, missing weights, and invalid dates, while mocking dependencies to improve test reliability.
+* Optimize Market Index Calculation – Store stock weights in a config file (application.properties) for easier updates and flexibility.
+* Improve API Response Formatting – Use DTOs (Data Transfer Objects) and @JsonInclude(JsonInclude.Include.NON_NULL) to clean up API responses and remove unnecessary fields.
+* Enhance Logging & Monitoring – Replace excessive System.out.println() statements with a logging framework like SLF4J to improve debugging and system observability.
 
 ```
 ## Useful commands
