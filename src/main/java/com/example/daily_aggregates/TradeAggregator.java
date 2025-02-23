@@ -42,17 +42,11 @@ public class TradeAggregator {
                 .mapToDouble(trade -> trade.getPrice() * trade.getVolume())
                 .sum();
 
-        System.out.println("DEBUG: Trades for " + sortedTrades.get(0).getTicker());
         sortedTrades.forEach(trade ->
                 System.out.println("Trade: " + trade.getTimestamp() +
                         " | Price: " + trade.getPrice() +
                         " | Volume: " + trade.getVolume())
         );
-        System.out.println("DEBUG: Open Price: " + openPrice);
-        System.out.println("DEBUG: Close Price: " + closePrice);
-        System.out.println("DEBUG: High Price: " + highPrice.orElse(0));
-        System.out.println("DEBUG: Low Price: " + lowPrice.orElse(0));
-        System.out.println("DEBUG: Total Volume: " + totalVolume);
 
         return new DailySummary(
                 openPrice,

@@ -42,12 +42,9 @@ public class Trade {
 
     @Override
     public String toString() {
-        return "Trade{" +
-                "timestamp='" + timestamp + '\'' +
-                ", ticker='" + ticker + '\'' +
-                ", price=" + price +
-                ", volume=" + volume +
-                '}';
+        return String.format("Trade[timestamp=%s, ticker=%s, price=%.2f, volume=%,d]",
+                timestamp, ticker, price, (int) volume);
+
     }
 
 }

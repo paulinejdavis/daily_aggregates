@@ -48,9 +48,6 @@ public class TradeServiceTest {
         double expectedClosePrice = 105.0;
         double actualClosePrice = abcSummary.closePrice();
 
-        System.out.println("EXPECTED CLOSE PRICE: " + expectedClosePrice);
-        System.out.println("ACTUAL CLOSE PRICE: " + actualClosePrice);
-
         assertEquals(100, abcSummary.openPrice());
         //assertEquals(expectedClosePrice, actualClosePrice);
         assertEquals(105, abcSummary.closePrice());
@@ -63,13 +60,8 @@ public class TradeServiceTest {
     void shouldCalculateMarketIndex() throws IOException {
         Map<String, Map<String, DailySummary>> summaries = tradeService.getDailySummaries("src/test/resources/sample_trades.txt");
 
-        System.out.println("DEBUG: Running Market Index Test...");
-
         double expectedIndex = 190.0;
         double marketIndex = tradeService.calculateMarketIndex(summaries);
-
-        System.out.println("EXPECTED MARKET INDEX: " + expectedIndex + " | ACTUAL MARKET INDEX: " + marketIndex);
-
         assertEquals(expectedIndex, marketIndex);
     }
 

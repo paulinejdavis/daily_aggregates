@@ -26,9 +26,6 @@ public class TradeAggregatorTest {
                 .mapToDouble(trade -> trade.getPrice() * trade.getVolume())
                 .sum();
 
-        System.out.println("EXPECTED TOTAL VOLUME: " + expectedTotalVolume);
-        System.out.println("ACTUAL TOTAL VOLUME: " + summary.totalVolume());
-
         assertEquals(100, summary.openPrice());
         assertEquals(120, summary.closePrice());
         assertEquals(120, summary.highPrice());

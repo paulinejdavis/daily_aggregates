@@ -39,7 +39,7 @@ public class TradeFileReader {
 
                     trades.add(trade);
                 } catch (IllegalArgumentException e) {
-                    System.out.println("WARNING: Skipping invalid trade entry: " + line); // ✅ Log invalid entries
+                    System.out.println("WARNING: Skipping invalid trade entry: " + line);
                 }
             }
         }

@@ -25,8 +25,6 @@ public class TradeService {
     }
 
     public double calculateMarketIndex(Map<String, Map<String, DailySummary>> summaries) {
-        System.out.println("DEBUG: Running Market Index Calculation...");
-
         double marketIndex = 0.0;
 
         Map<String, Double> weights = Map.of(
@@ -48,9 +46,6 @@ public class TradeService {
             return 0.0;
         }
 
-        System.out.println("DEBUG: Latest Valid Trading Date: " + latestValidDate);
-        System.out.println("DEBUG: Available Tickers on " + latestValidDate + " -> " + summaries.get(latestValidDate).keySet());
-
         for (Map.Entry<String, DailySummary> entry : summaries.get(latestValidDate).entrySet()) {
             String ticker = entry.getKey();
             double closePrice = entry.getValue().closePrice();
@@ -58,16 +53,13 @@ public class TradeService {
 
             if (weight > 0) {
                 double contribution = weight * closePrice;
-                System.out.println("DEBUG: Ticker: " + ticker + " | Weight: " + weight + " | Close Price: " + closePrice + " | Contribution: " + contribution);
                 marketIndex += contribution;
             } else {
                 System.out.println("⚠️ WARNING: No weight assigned for " + ticker + ". Skipping.");
             }
         }
 
-        System.out.println("DEBUG: Expected Sum Before Ceiling: " + marketIndex);
         double finalMarketIndex = Math.ceil(marketIndex);
-        System.out.println("DEBUG: Final Market Index After Ceiling: " + finalMarketIndex);
 
         return finalMarketIndex;
     }
