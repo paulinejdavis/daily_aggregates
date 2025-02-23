@@ -203,3 +203,14 @@ mvn test # if using maven
 ```
 
 ```
+
+## Useful screengrabs
+
+<img width="775" alt="Screenshot 2025-02-23 at 11 49 31" src="https://github.com/user-attachments/assets/3b6bd27b-426b-46e3-b076-4622f9eae4f9" />
+
+
+<img width="770" alt="Screenshot 2025-02-23 at 11 48 52" src="https://github.com/user-attachments/assets/750fec43-2cbc-446b-b2ff-05ee357656a9" />
+
+```
+
+```
