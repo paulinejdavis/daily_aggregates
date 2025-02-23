@@ -220,6 +220,6 @@ http://localhost:8080/trades/market-index?filePath=src/test/resources/sample_tra
 
 <img width="770" alt="Screenshot 2025-02-23 at 11 48 52" src="https://github.com/user-attachments/assets/750fec43-2cbc-446b-b2ff-05ee357656a9" />
 
-```
-
-```
+<img width="348" alt="Screenshot 2025-02-23 at 12 04 32" src="https://github.com/user-attachments/assets/685536f0-aa90-4636-bb7d-dd461d475f3b" />
+</br></br></br>
+<img width="244" alt="Screenshot 2025-02-23 at 12 04 43" src="https://github.com/user-attachments/assets/91dd5fd1-c75f-4f01-88fe-7e51f9c690f0" />
