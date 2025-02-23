@@ -57,4 +57,12 @@ import static org.junit.jupiter.api.Assertions.*;
             fail("Exception occurred while fetching trade summaries: " + e.getMessage());
         }
     }
+
+    @Test
+    void shouldReturnMarketIndex() {
+        String url = "http://localhost:" + port + "/trades/market-index?filePath=src/test/resources/sample_trades.txt";
+        double response = restTemplate.getForObject(url, Double.class);
+        assertEquals(190.0, response, 0.01);
+    }
+
 }

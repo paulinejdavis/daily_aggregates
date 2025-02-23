@@ -27,4 +27,11 @@ public class TradeController {
         }
     }
 
+
+    @GetMapping("/market-index")
+    public double getMarketIndex(@RequestParam String filePath) throws IOException {
+        Map<String, Map<String, DailySummary>> summaries = tradeService.getDailySummaries(filePath);
+        return tradeService.calculateMarketIndex(summaries);
+    }
+
 }
